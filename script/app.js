@@ -17,7 +17,8 @@ const switchTheme = () => {
 const showResult = queryResponse => {
     console.log({queryResponse});
 
-    document.querySelector(".js-moonContainer").innerHTML = `<img class="c-moonphase__svg" src="img/svg/Moonlet_${queryResponse.moonPhase}.svg" alt="Visual for ${queryResponse.moonPhase}">`;
+    const imgFileName = "Moonlet_" + queryResponse.moonPhase.replace(" ", "-") + ".svg";
+    document.querySelector(".js-moonContainer").innerHTML = `<img class="c-moonphase__svg" src="img/svg/${imgFileName}" alt="Visual for ${queryResponse.moonPhase}">`;
     document.querySelector(".js-moonPhase").innerText = queryResponse.moonPhase;
     document.querySelector(".js-illumination").innerText = Math.round(queryResponse.moonIllumination*100);
     document.querySelector(".js-moonrise").innerText = queryResponse.moonRise;
