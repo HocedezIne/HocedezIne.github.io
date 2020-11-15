@@ -1,3 +1,46 @@
+const phaseExplanation =  {
+	"First Quarter": {
+		"rise": "at noon",
+		"transit": "at sunset",
+		"set": "at midnight"
+	},
+	"Full Moon": {
+		"rise": "at sunset",
+		"transit": "at midnight",
+		"set": "sunrise"
+	},
+	"Last Quarter": {
+		"rise": "at midnight",
+		"transit": "at sunrise",
+		"set": "at noon"
+	},
+	"New Moon": {
+		"rise": "at sunrise",
+		"transit": "at noon",
+		"set": "at sunset"
+	},
+	"Waning Crescent": {
+		"rise": "after midnight",
+		"transit": "after sunrise",
+		"set": "after noon"
+	},
+	"Waning Gibbous": {
+		"rise": "after sunset",
+		"transit": "after midnight",
+		"set": "after sunrise"
+	},
+	"Waxing Crescent": {
+		"rise": "before noon",
+		"transit": "before sunset",
+		"set": "before midnight"
+	},
+	"Waxing Gibbous": {
+		"rise": "after noon",
+		"transit": "after sunset",
+		"set": "after midnight"
+	}
+}
+
 const switchTheme = () => {
     var btn = document.querySelector(".js-theme-toggle");
     var html = document.getElementsByTagName("html")[0];
@@ -15,12 +58,21 @@ const switchTheme = () => {
 }
 
 const showResult = queryResponse => {
+    console.log(queryResponse);
+
     const imgFileName = "Moonlet_" + queryResponse.moonPhase.replace(" ", "") + ".svg";
     document.querySelector(".js-moonContainer").innerHTML = `<img class="c-moonphase__svg" src="img/svg/${imgFileName}" alt="Visual for ${queryResponse.moonPhase}">`;
+    
     document.querySelector(".js-moonPhase").innerText = queryResponse.moonPhase;
     document.querySelector(".js-illumination").innerText = Math.round(queryResponse.moonIllumination*100);
+
     document.querySelector(".js-moonrise").innerText = queryResponse.moonRise;
     document.querySelector(".js-moonset").innerText = queryResponse.moonSet;
+
+    var phaseExplanationData = phaseExplanation[`${queryResponse.moonPhase}`];
+    document.querySelector(".js-rise-comparison").innerText = phaseExplanationData.rise;
+    document.querySelector(".js-transit-comparison").innerText = phaseExplanationData.transit;
+    document.querySelector(".js-set-comparison").innerText = phaseExplanationData.set;
 }
 
 const getLocation = () => {
