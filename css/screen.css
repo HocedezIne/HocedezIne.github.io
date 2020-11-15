@@ -1,0 +1,516 @@
+/*------------------------------------*\
+#Variables
+\*------------------------------------*/
+
+:root {
+    /* measurements */
+    --global-baseline: 8px;         
+    --global-whitespace: calc(var(--global-baseline) * 3); /* = 24px */
+
+    --global-whitespace-xs: calc(var(--global-baseline) / 2); /* = 4px */
+    --global-whitespace-sm: calc(var(--global-baseline) * 1); /*  = 8px */
+    --global-whitespace-md: calc(var(--global-baseline) * 2); /*  = 16px */
+    --global-whitespace-lg: calc(var(--global-baseline) * 4); /*  = 32px */
+    --global-whitespace-xl: calc(var(--global-whitespace) * 2); /*  = 48px */
+    --global-whitespace-xxl: calc(var(--global-whitespace) * 3); /*  = 72px */
+
+    /* colors */
+    --global-color-xx-light : #E1E7EE;
+    --global-color-x-light : #96B2D3;
+    --global-color-light : #4772A3;
+    --global-color-dark : #0B3784;
+    --global-color-x-dark : #081F56;
+    --global-color-xx-dark : #020920;
+
+    /* borders */
+    --global-borderRadius: 20px;
+    --global-borderWidth: 1px;
+
+    /* forms */
+    --global-input-backgroundColor: var(--global-color-xx-light);
+    --global-input-color: var(--global-color-x-dark);
+
+    --global-input-borderColor: var(--global-color-dark);
+    --global-input-borderColor: violet;
+    
+    /* transitions */
+    --global-transitionTiming-alpha: .1s ease-out;
+    
+    /* fonts */
+    --global-logo-font : "Lora", serif;
+    --global-font : "Noto Sans JP", sans-serif;
+}
+
+/*------------------------------------*\
+#GENERIC
+\*------------------------------------*/
+
+/*
+    Generic: Page
+    ---
+    Global page styles + universal box-sizing:
+*/
+
+html {
+    box-sizing: border-box;
+
+    font-size: calc(var(--global-baseline)*2.5); /* font-size op de body = 1 REM */
+    font-weight: 300;
+    line-height: calc(var(--global-baseline) * 3);;
+    font-family: var(--global-font);
+
+    color: var(--global-textColor);
+    background-image: linear-gradient(to bottom right, var(--global-backgroundColor-top), var(--global-backgroundColor-bottom));
+    background-size: cover;
+    height: 100%;
+
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+*,
+*:before,
+*:after {
+    box-sizing: inherit;
+}
+
+::-moz-selection {
+    background: var(--global-selection-backgroundColor);
+    color: var(--global-selection-color);
+    text-shadow: none;
+}
+
+::selection {
+    background: var(--global-selection-backgroundColor);
+    color: var(--global-selection-color);
+    text-shadow: none;
+}
+
+/*------------------------------------*\
+#Elements
+\*------------------------------------*/
+
+/*
+Elements: Images
+---
+Default markup for images to make them responsive
+*/
+
+img {
+    max-width: 100%;
+    vertical-align: top;
+}
+
+/*
+    Elements: typography
+    ---
+    Default markup for typographic elements
+*/
+
+h1,
+h2,
+h3 {
+    font-weight: 700;
+}
+
+h1 {
+    font-size: 36px;
+    line-height: 48px;
+    margin: 0 0 24px;
+}
+
+h2 {
+    font-size: 32px;
+    line-height: 40px;
+    margin: 0 0 24px;
+}
+
+h3 {
+    font-size: 26px;
+    line-height: 32px;
+    margin: 0 0 24px;
+}
+
+h4,
+h5,
+h6 {
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 24px;
+    margin: 0 0 24px;
+}
+
+p,
+ol,
+ul,
+dl,
+table,
+address,
+figure {
+    margin: 0 0 24px;
+}
+
+ul,
+ol {
+    padding-left: 24px;
+}
+
+li ul,
+li ol {
+    margin-bottom: 0;
+}
+
+blockquote {
+    font-style: normal;
+    font-size: 23px;
+    line-height: 32px;
+    margin: 0 0 24px;
+}
+
+blockquote * {
+    font-size: inherit;
+    line-height: inherit;
+}
+
+figcaption {
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 16px;
+    margin-top: 8px;
+}
+
+hr {
+    border: 0;
+    height: 1px;
+    background: LightGrey;
+    margin: 0 0 24px;
+}
+
+a {
+    color: red;
+    outline-color: red;
+    outline-width: medium;
+    outline-offset: 2px;
+}
+
+a:visited,
+a:active {
+    color: red;
+}
+
+a:hover,
+a:focus {
+    color: red;
+}
+
+label,
+input {
+    display: block;
+}
+
+select {
+    width: 100%;
+}
+
+input::placeholder {
+    color: gray;
+}
+
+/*------------------------------------*\
+#OBJECTS
+\*------------------------------------*/
+
+/*
+    Object: Button reset
+    ---
+    Small button reset object
+*/
+
+.o-button-reset {
+    border: none;
+    margin: 0;
+    padding: 0;
+    width: auto;
+    overflow: visible;
+    background: transparent;
+
+    /* inherit font & color from ancestor */
+    color: inherit;
+    font: inherit;
+
+    /* Normalize `line-height`. Cannot be changed from `normal` in Firefox 4+. */
+    line-height: normal;
+
+    /* Corrects font smoothing for webkit */
+    -webkit-font-smoothing: inherit;
+    -moz-osx-font-smoothing: inherit;
+
+    /* Corrects inability to style clickable `input` types in iOS */
+    -webkit-appearance: none;
+}
+
+/*
+    Object: Hide accessible
+    ---
+    Accessibly hide any element
+*/
+
+.o-hide-accessible {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    border: 0;
+}
+
+/*------------------------------------*\
+#COMPONENTS
+\*------------------------------------*/
+
+/*
+    Component: Moon
+    ---
+    The moon
+*/
+
+.c-moon {
+    width: 0.8rem;
+    height: 0.8rem;
+
+    fill: var(--global-fillColor);
+}
+
+.c-moonphase__name {
+    color: var(--global-accent-textColor);
+
+    font-size: 1.2rem;
+    line-height: 1.167em;
+    font-weight: 400;
+
+    margin-bottom: calc(var(--global-whitespace)/3);
+}
+
+.c-moonphase__illumination {
+    font-size: 0.8rem;
+    line-height: 1rem;
+}
+
+.c-moonphase__svg {
+    width: 10rem;
+    height: 10rem;
+    margin-bottom: var(--global-whitespace-xl);
+}
+
+.c-moonContainer {
+    text-align: center;
+
+    margin-top: 25%;
+}
+
+/*
+    Component: App
+    ---
+    Main app wrapper
+*/
+
+.c-app {
+    /* swap flexbox for grid */
+    display: flex;
+    flex-direction: column;
+
+    box-sizing: content-box; /* padding wordt nu aan buitenkant gezet ipv binnenkant */
+    margin: 0 auto;
+
+    max-width: 400px;
+    min-height: calc(100vh - 2 * 1rem);
+    padding: 1rem 2rem; /* in huidige font-size 16 en 32px */
+}
+
+.c-app__summary {
+    font-weight: 300;
+    text-align: center;
+}
+
+/*
+    Component: Timeline
+    ---
+    Timeline with moon visualisation
+*/
+
+.c-horizon{
+    margin-top: auto;
+}
+
+.c-horizon__sky-wrapper {
+    position: relative;
+    overflow: hidden;
+
+    padding-top: 1.375rem ;
+    padding-right: 2.5rem;
+}
+
+.c-horizon__sky {
+    position: relative;
+    height: 100%;
+}
+
+.c-timeline__moon {
+    position: absolute;
+    transform: translateY(200%); 
+}
+
+.c-timeline__moon::before {
+    content: attr(data-time);
+
+    display: block;
+
+    font-size: 30rem;
+    line-height: 30rem;
+    text-align: center;
+
+    margin-bottom: -1rem;
+}
+
+.c-timeline__line {
+    border-top: 1px solid var(--global-borderColor);
+    margin-bottom: 2.5rem;
+
+    display: flex;
+    justify-content: space-between;
+}
+
+.c-timeline__time {
+    font-size: .8rem;
+    line-height: 1rem;
+
+    padding-top: 0.4rem;
+}
+
+/*------------------------------------*\
+#UTILITIES
+\*------------------------------------*/
+
+/*
+    Utilities: Mute
+    Mute with opacity
+*/
+.u-bold {
+    font-weight: 400;
+}
+
+/*------------------------------------*\
+#STATES
+\*------------------------------------*/
+
+/*
+    Change the theme using CSS vars.
+*/
+
+.dark-theme {
+    /* general */
+    --global-textColor: var(--global-color-x-light);
+    --global-accent-textColor: var(--global-color-xx-light);
+    --global-backgroundColor-top: var(--global-color-x-dark);
+    --global-backgroundColor-bottom: var(--global-color-xx-dark);
+
+    /* selection */
+    --global-selection-color: var(--global-color-xx-dark);
+    --global-selection-backgroundColor: var(--global-color-xx-light);
+
+    /* svg */
+    --global-fillColor: var(--global-color-xx-light);
+
+    /* border */
+    --global-borderColor: var(--global-color-x-light);
+}
+
+.light-theme {
+    /* general */
+    --global-textColor: var(--global-color-x-dark);
+    --global-backgroundColor-top: var(--global-color-x-light);
+    --global-backgroundColor-bottom: var(--global-color-xx-light);
+
+    /* selection */
+    --global-selection-color: var(--global-color-xx-light);
+    --global-selection-backgroundColor: var(--global-color-x-dark);
+
+    /* svg */
+    --global-fillColor: var(--global-color-xx-dark);
+
+    /* border */
+    --global-borderColor: var(--global-color-x-dark);
+}
+
+/*------------------------------------*\
+#MEDIA
+\*------------------------------------*/
+
+/*
+    Print styles.
+    ---
+    Inlined to avoid the additional HTTP request:
+    http://www.phpied.com/delay-loading-your-print-css/
+*/
+
+@media print {
+    *,
+    *:before,
+    *:after {
+        background: transparent !important;
+        color: #000 !important;
+        /* Black prints faster:
+        http://www.sanbeiji.com/archives/953 */
+        box-shadow: none !important;
+        text-shadow: none !important;
+    }
+    a,
+    a:visited {
+        text-decoration: underline;
+    }
+    a[href]:after {
+        content: " (" attr(href) ")";
+    }
+    abbr[title]:after {
+        content: " (" attr(title) ")";
+    }
+    /*
+    * Don't show links that are fragment identifiers,
+    * or use the `javascript:` pseudo protocol
+    */
+    a[href^="#"]:after,
+    a[href^="javascript:"]:after {
+        content: "";
+    }
+    pre {
+        white-space: pre-wrap !important;
+    }
+    pre,
+    blockquote {
+        border: 1px solid #999;
+        page-break-inside: avoid;
+    }
+    /*
+    * Printing Tables:
+    * http://css-discuss.incutio.com/wiki/Printing_Tables
+    */
+    thead {
+        display: table-header-group;
+    }
+    tr,
+    img {
+        page-break-inside: avoid;
+    }
+    p,
+    h2,
+    h3 {
+        orphans: 3;
+        widows: 3;
+    }
+    h2,
+    h3 {
+        page-break-after: avoid;
+    }
+}

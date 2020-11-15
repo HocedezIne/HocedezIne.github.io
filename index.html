@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en" class="dark-theme">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>Moonlet</title>
+        <meta name="description" content="Check the current moon phase.">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="msapplication-TileColor" content="#0B3784">
+        <meta name="theme-color" content="#0B3784">
+
+        <link href="https://fonts.googleapis.com/css2?family=Lora&family=Noto+Sans+JP:wght@300;400;700&display=swap" rel="stylesheet">
+        <link rel="shortcut icon" href="img/svg/Moonlet_Logo.svg" type="image/svg">
+
+        <link rel="stylesheet" href="css/normalize.css">
+        <link rel="stylesheet" href="css/screen.css">
+
+        <script src="script/app.js"></script>
+    </head>
+    <body>
+        <main class="c-app">
+            <!-- switch dark/light theme -->
+            <button class="o-button-reset js-theme-toggle">dark</button>
+
+            <!-- phase visualization -->
+            <div class="c-moonContainer">
+                <div class="js-moonContainer">
+                    <h1>Loading...</h1>
+                </div>
+                <div>
+                    <p class="c-moonphase__name js-moonPhase">Moon phase</p>
+                    <p>
+                        illumination: <span class="c-moonphase__illumination js-illumination">..</span>%
+                    </p>
+                </div>
+            </div>
+
+            <!-- timeline -->
+            <div class="c-horizon">
+                <div class="c-horizon__sky-wrapper">
+                    <div class=c-horizon__sky"">
+                        <span class="c-timeline__moon js-moon" date-time="00:00" style="left:0%">
+                            <svg class="c-moon" viewBox="0 0 100 100" width="100" height="100">
+                                <circle cx="50" cy="50" r="50"/>
+                            </svg>
+                        </span>
+                        <div class="c-timeline__line">
+                            <time class="c-timeline__time js-moonrise">__:__</time>
+                            <time class="c-timeline__time js-moonset">__:__</time>
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <!-- phase explanation -->
+            <div>
+                <p class="c-app__summary">
+                    The moon rises <span class="u-bold js-rise-comparison">after noon</span>,<br>
+                    transits meridian <span class="u-bold js-transits-comparison">after sunset</span>,<br>
+                    and sets <span class="u-bold js-set-comparison">after midnight</span>.
+                </p>
+            </div>
+        </main>
+    </body>
+</html>
