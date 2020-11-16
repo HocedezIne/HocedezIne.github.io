@@ -66,8 +66,8 @@ const showResult = queryResponse => {
     document.querySelector(".js-moonPhase").innerText = queryResponse.moonPhase;
     document.querySelector(".js-illumination").innerText = Math.round(queryResponse.moonIllumination*100);
 
-    document.querySelector(".js-moonrise").innerText = queryResponse.moonRise;
-    document.querySelector(".js-moonset").innerText = queryResponse.moonSet;
+    // document.querySelector(".js-moonrise").innerText = queryResponse.moonRise;
+    // document.querySelector(".js-moonset").innerText = queryResponse.moonSet;
 
     var phaseExplanationData = phaseExplanation[`${queryResponse.moonPhase}`];
     document.querySelector(".js-rise-comparison").innerText = phaseExplanationData.rise;
