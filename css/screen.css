@@ -22,19 +22,13 @@
     --global-color-x-dark : #081F56;
     --global-color-xx-dark : #020920;
 
+    /* box shadows */
+    --global-boxshadow-sm: 0 0 calc(var(--global-baseline) / 2) 0 var(--global-boxshadowColor);
+    --global-boxshadow-lg: 0 0 var(--global-whitespace-md) 0 var(--global-boxshadowColor);
+
     /* borders */
     --global-borderRadius: 20px;
     --global-borderWidth: 1px;
-
-    /* forms */
-    --global-input-backgroundColor: var(--global-color-xx-light);
-    --global-input-color: var(--global-color-x-dark);
-
-    --global-input-borderColor: var(--global-color-dark);
-    --global-input-borderColor: violet;
-    
-    /* transitions */
-    --global-transitionTiming-alpha: .1s ease-out;
     
     /* fonts */
     --global-logo-font : "Lora", serif;
@@ -389,6 +383,39 @@ input::placeholder {
     padding-top: 0.4rem;
 }
 
+/*
+    Component: Button
+    ---
+    Class to put on buttons
+*/
+
+.c-button {    
+    --button-borderColor: var(--global-borderColor);
+    --button-hover-borderColor: var(--global-hover-borderColor);
+    --button-focus-borderColor:var(--global-focus-borderColor);
+
+    font-size: 0.8rem;
+    line-height: calc(var(--global-baseline) * 2.5);
+    color: var(--global-textColor);
+
+    border-radius: var(--global-borderRadius);
+    border: 1px solid var(--button-borderColor);
+
+    outline: none;
+    
+    padding: calc(calc(var(--global-baseline) * 3) - calc(var(--global-baseline) * 2.5)) var(--global-baseline);
+    margin-left: calc(100% - 60px);
+}
+
+.c-button:hover {
+    border-color: var(--button-hover-borderColor);
+}
+
+.c-button:focus {
+    border-color: var(--button-focus-borderColor);
+    box-shadow: var(--global-boxshadow-sm);
+}
+
 /*------------------------------------*\
 #UTILITIES
 \*------------------------------------*/
@@ -413,8 +440,11 @@ input::placeholder {
     /* general */
     --global-textColor: var(--global-color-x-light);
     --global-accent-textColor: var(--global-color-xx-light);
+
     --global-backgroundColor-top: var(--global-color-x-dark);
     --global-backgroundColor-bottom: var(--global-color-xx-dark);
+
+    --global-boxshadowColor: rgba(150, 178, 211, 0.75);
 
     /* selection */
     --global-selection-color: var(--global-color-xx-dark);
@@ -424,14 +454,20 @@ input::placeholder {
     --global-fillColor: var(--global-color-xx-light);
 
     /* border */
-    --global-borderColor: var(--global-color-x-light);
+    --global-borderColor: var(--global-color-light);
+    --global-hover-borderColor: var(--global-color-x-light);
+    --global-focus-borderColor: var(--global-color-x-light);
 }
 
 .light-theme {
     /* general */
     --global-textColor: var(--global-color-x-dark);
+    --global-accent-textColor: var(--global-color-xx-dark);
+
     --global-backgroundColor-top: var(--global-color-x-light);
     --global-backgroundColor-bottom: var(--global-color-xx-light);
+
+    --global-boxshadowColor: rgba(8, 31, 86, 0.75);
 
     /* selection */
     --global-selection-color: var(--global-color-xx-light);
@@ -441,7 +477,9 @@ input::placeholder {
     --global-fillColor: var(--global-color-xx-dark);
 
     /* border */
-    --global-borderColor: var(--global-color-x-dark);
+    --global-borderColor: var(--global-color-light);
+    --global-hover-borderColor: var(--global-color-x-dark);
+    --global-focus-borderColor: var(--global-color-x-dark);
 }
 
 /*------------------------------------*\
