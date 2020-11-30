@@ -22,9 +22,9 @@
     --global-color-x-dark : #081F56;
     --global-color-xx-dark : #020920;
 
-    /* box shadows */
-    --global-boxshadow-sm: 0 0 calc(var(--global-baseline) / 2) 0 var(--global-boxshadowColor);
-    --global-boxshadow-lg: 0 0 var(--global-whitespace-md) 0 var(--global-boxshadowColor);
+    /* shadows */
+    --global-boxshadow: 0 0 calc(var(--global-baseline) / 2) 0 var(--global-shadowColor);
+    --global-dropshadow: 0 0 var(--global-whitespace-sm) var(--global-shadowColor);
 
     /* borders */
     --global-borderRadius: 20px;
@@ -55,8 +55,6 @@ html {
 
     color: var(--global-textColor);
     background-image: linear-gradient(to bottom right, var(--global-backgroundColor-top), var(--global-backgroundColor-bottom));
-    background-size: cover;
-    height: 100%;
 
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
@@ -292,10 +290,12 @@ input::placeholder {
     line-height: 1rem;
 }
 
-.c-moonphase__svg {
+.c-moonphase__icon {
     width: 10rem;
     height: 10rem;
     margin-bottom: var(--global-whitespace-xl);
+
+    filter: drop-shadow(var(--global-dropshadow));
 }
 
 .c-moonContainer {
@@ -328,59 +328,41 @@ input::placeholder {
     text-align: center;
 }
 
-/*
-    Component: Timeline
-    ---
-    Timeline with moon visualisation
-*/
-
-.c-horizon{
-    margin-top: auto;
+.c-app-landing {
+    margin: 0;
 }
 
-.c-horizon__sky-wrapper {
-    position: relative;
-    overflow: hidden;
-
-    padding-top: 1.375rem ;
-    padding-right: 2.5rem;
+.c-app-landing__mockup {
+    margin: 0 auto;
 }
 
-.c-horizon__sky {
-    position: relative;
-    height: 100%;
+/* .c-mockup {
+    height: calc(100vh - 10%);
+    height: calc(100vh - var(--global-baseline) * 4);
+} */
+
+.c-app-landing__contentwrapper {
+    margin: 16px;
+
+    align-items: center;
 }
 
-.c-timeline__moon {
-    position: absolute;
-    transform: translateY(200%); 
+.c-app-landing__content {
+    line-height: 1.4rem;
 }
 
-.c-timeline__moon::before {
-    content: attr(data-time);
+@media (min-width: 992px) {
+    .c-app-landing {
+        margin: calc(var(--global-baseline) * 11.5);
 
-    display: block;
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 352px;
+    }
 
-    font-size: 30rem;
-    line-height: 30rem;
-    text-align: center;
-
-    margin-bottom: -1rem;
-}
-
-.c-timeline__line {
-    border-top: 1px solid var(--global-borderColor);
-    margin-bottom: 2.5rem;
-
-    display: flex;
-    justify-content: space-between;
-}
-
-.c-timeline__time {
-    font-size: .8rem;
-    line-height: 1rem;
-
-    padding-top: 0.4rem;
+    .c-mockup {
+        height: calc(100vh - var(--global-baseline) * 23);
+    }
 }
 
 /*
@@ -413,7 +395,134 @@ input::placeholder {
 
 .c-button:focus {
     border-color: var(--button-focus-borderColor);
-    box-shadow: var(--global-boxshadow-sm);
+}
+
+.c-button:active {
+    box-shadow: var(--global-boxshadow);
+}
+
+/*
+    Component: Logo
+    ---
+    Class to put on logos
+*/
+
+.c-logo {
+    display: flex;
+    align-items: center;
+
+    margin-bottom: var(--global-whitespace-xl);
+}
+
+.c-logo__icon {
+    width: calc(var(--global-baseline) * 10);
+    height: calc(var(--global-baseline) * 10);
+
+    margin-right: calc(var(--global-baseline) * 3);
+}
+
+.c-logo__text {
+    font-family: var(--global-logo-font);
+    font-size: 1.6rem;
+    line-height: 1.6rem;
+    color: var(--global-color-xx-light);
+
+    margin-bottom: 0;
+}
+
+/*
+    Component: Forms
+    ---
+    Everything form related here
+*/
+
+.c-form {
+    margin: 76px 0;
+}
+
+.c-form * {
+    /* background-color: #fff; */
+    margin-bottom: 16px;
+}
+
+.c-form-field {
+    position: relative;
+}
+
+/*
+    Component: Label
+    ---
+    Class to put on all form labels
+*/
+
+.c-label {
+    margin-bottom: 0;
+
+    padding-bottom: var(--global-whitespace-sm);
+    
+    font-size: 0.8rem;
+    line-height: 1rem;
+    color: var(--global-color-x-dark);
+}
+
+.c-label__error-message {
+    font-weight: 600;
+	float: right;
+	display: none;
+}
+
+.c-label__error-message.is-visible {
+	display: block;
+}
+
+.c-label--floating {
+    position: absolute;
+    top: calc(var(--global-baseline) *1.5);
+    left: var(--global-whitespace-sm);
+    padding: var(--global-whitespace-xs) var(--global-whitespace-sm);
+
+    /* background-color: black; */
+    transition: transform var(--global-transitionDuration-alpha) var(--global-transitionEasing-out);
+    z-index: 1;
+    /* border-radius: var(--global-borderRadius); */
+}
+
+/*
+    Component: Input
+    ---
+    Class to put on all input="text" like form inputs
+*/
+
+.c-input {
+    --input-transition: all var(--global-transitionDuration-alpha) var(--global-transitionEasing-out);
+    
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    width: 100%;
+
+    border-radius: var(--global-borderRadius);
+    border: var(--input-borderWidth, var(--global-borderWidth)) solid var(--input-borderColor, var(--global-input-borderColor));
+    background-color: var(--global-color-xx-light);
+
+    color: var(--global-color-x-dark);
+    font-family: inherit;
+    font-size: 0.8rem;
+    line-height: 1rem;
+
+    padding: 16px;
+    outline: none;
+    transition: var(--input-transition);
+}
+
+.c-input:hover {
+    border-color: var(--input-hover-borderColor, var(--global-input-hover-borderColor));
+}
+
+.c-input:focus,
+.c-input:active {
+    border-color: var(--input-focus-borderColor, var(--global-input-focus-borderColor));
+    box-shadow: var(--global-input-focus-boxShadowSpread) var(--input-focus-boxShadowColor, var(--global-input-focus-boxShadowColor));
 }
 
 /*------------------------------------*\
@@ -421,11 +530,26 @@ input::placeholder {
 \*------------------------------------*/
 
 /*
-    Utilities: Mute
-    Mute with opacity
+    Utilitie: bold
+    Change font-weight to bold
 */
 .u-bold {
     font-weight: 400;
+}
+
+/*
+    Utilitie: button variant
+    Form variant of button
+*/
+.u-action {
+    font-size: 1rem;
+    line-height: 1.2rem;
+    color: var(--global-accent-textColor);
+
+    --button-borderColor: var(--global-accent-textColor);
+
+    padding: var(--global-whitespace-md);
+    margin: 0 auto;
 }
 
 /*------------------------------------*\
@@ -444,7 +568,7 @@ input::placeholder {
     --global-backgroundColor-top: var(--global-color-x-dark);
     --global-backgroundColor-bottom: var(--global-color-xx-dark);
 
-    --global-boxshadowColor: rgba(150, 178, 211, 0.75);
+    --global-shadowColor: rgba(150, 178, 211, 0.75);
 
     /* selection */
     --global-selection-color: var(--global-color-xx-dark);
@@ -467,7 +591,7 @@ input::placeholder {
     --global-backgroundColor-top: var(--global-color-x-light);
     --global-backgroundColor-bottom: var(--global-color-xx-light);
 
-    --global-boxshadowColor: rgba(8, 31, 86, 0.75);
+    --global-shadowColor: rgba(8, 31, 86, 0.75);
 
     /* selection */
     --global-selection-color: var(--global-color-xx-light);
@@ -480,6 +604,15 @@ input::placeholder {
     --global-borderColor: var(--global-color-light);
     --global-hover-borderColor: var(--global-color-x-dark);
     --global-focus-borderColor: var(--global-color-x-dark);
+}
+
+.is-floating, .c-form-field:focus-within .c-label--floating { 
+    transform: translateY(calc(var(--global-baseline) * -5.5));
+    color: #E1E7EE;
+}
+
+.has-error {
+    color: blueviolet;
 }
 
 /*------------------------------------*\

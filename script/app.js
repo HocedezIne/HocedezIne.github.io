@@ -60,9 +60,7 @@ const switchTheme = () => {
 const showResult = queryResponse => {
     console.log(queryResponse);
 
-    const imgFileName = "Moonlet_" + queryResponse.moonPhase.replace(" ", "") + ".svg";
-    document.querySelector(".js-moonContainer").innerHTML = `<img class="c-moonphase__svg" src="img/svg/${imgFileName}" alt="Visual for ${queryResponse.moonPhase}">`;
-    
+    document.querySelector(".js-moonContainer").innerHTML = `<svg class="c-moonphase__icon"><use xlink:href="#${queryResponse.moonPhase.replace(" ", "")}"></use></svg>`;
     document.querySelector(".js-moonPhase").innerText = queryResponse.moonPhase;
     document.querySelector(".js-illumination").innerText = Math.round(queryResponse.moonIllumination*100);
 
@@ -99,7 +97,7 @@ const getAPI = async (position) => {
 }
 
 document.addEventListener("DOMContentLoaded", function(){
-    console.log("Script found!");
+    console.log("Script loaded!");
     document.querySelector(".js-theme-toggle").addEventListener("click", switchTheme);
     getLocation();
 });
