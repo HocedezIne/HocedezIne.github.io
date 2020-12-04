@@ -64,8 +64,70 @@ const showResult = queryResponse => {
     document.querySelector(".js-moonPhase").innerText = queryResponse.moonPhase;
     document.querySelector(".js-illumination").innerText = Math.round(queryResponse.moonIllumination*100);
 
-    // document.querySelector(".js-moonrise").innerText = queryResponse.moonRise;
-    // document.querySelector(".js-moonset").innerText = queryResponse.moonSet;
+	document.querySelector(".js-sun-rise").innerText = queryResponse.sunRise;
+	document.querySelector(".js-sun-set").innerText = queryResponse.sunSet;
+	// grid span sun
+	const sunRise = Math.round((parseInt(queryResponse.sunRise.split(":")[0]) * 60 + parseInt(queryResponse.sunRise.split(":")[1])) / 1440 * 100);
+	const sunSet = Math.round((parseInt(queryResponse.sunSet.split(":")[0]) * 60 + parseInt(queryResponse.sunSet.split(":")[1])) / 1440 * 100);
+	const sunSpan = sunSet - sunRise;
+	document.querySelector(".js-timeline-sun").style.gridColumn = `${sunRise} / span ${sunSpan}`;
+
+	// grid span moon
+	let moonRise, moonSet;
+	switch(queryResponse.moonPhase){
+		case "Full Moon":
+			document.querySelector(".js-moon").innerText = "TODO";
+			break;
+		case "Waning Gibbous":
+			// add extra html
+			document.querySelector(".js-moon").innerHTML = `<div class="c-timeline__line js-timeline-moon__set"><time class="c-timeline__time js-moon-set">__:__</time></div><div class="c-timeline__line js-timeline-moon__rise"><time class="c-timeline__time js-moon-rise">__:__</time></div>`;
+
+			// set time elements
+			document.querySelector(".js-moon-rise").innerText = queryResponse.moonRise;
+			document.querySelector(".js-moon-set").innerText = queryResponse.moonSet;
+
+			// calculate data
+			moonRise = Math.round((parseInt(queryResponse.moonRise.split(":")[0]) * 60 + parseInt(queryResponse.moonRise.split(":")[1])) / 1440 * 100);
+			moonSet = Math.round((parseInt(queryResponse.moonSet.split(":")[0]) * 60 + parseInt(queryResponse.moonSet.split(":")[1])) / 1440 * 100);
+
+			// edit timeline + add extra style rule
+			document.querySelector(".js-timeline-moon__set").style.gridColumn = `1 / span ${moonSet}`;
+			document.querySelector(".js-timeline-moon__set").style.justifyContent = "flex-end";
+			document.querySelector(".js-timeline-moon__rise").style.gridColumn = `${moonRise} / -1`;
+			break;
+		case "Waxing Gibbous":
+			// add extra html
+			document.querySelector(".js-moon").innerHTML = `<div class="c-timeline__line js-timeline-moon__set"><time class="c-timeline__time js-moon-set">__:__</time></div><div class="c-timeline__line js-timeline-moon__rise"><time class="c-timeline__time js-moon-rise">__:__</time></div>`;
+
+			// set time elements
+			document.querySelector(".js-moon-rise").innerText = queryResponse.moonRise;
+			document.querySelector(".js-moon-set").innerText = queryResponse.moonSet;
+
+			// calculate data
+			moonRise = Math.round((parseInt(queryResponse.moonRise.split(":")[0]) * 60 + parseInt(queryResponse.moonRise.split(":")[1])) / 1440 * 100);
+			moonSet = Math.round((parseInt(queryResponse.moonSet.split(":")[0]) * 60 + parseInt(queryResponse.moonSet.split(":")[1])) / 1440 * 100);
+
+			// edit timeline + add extra style rule
+			document.querySelector(".js-timeline-moon__set").style.gridColumn = `1 / span ${moonSet}`;
+			document.querySelector(".js-timeline-moon__set").style.justifyContent = "flex-end";
+			document.querySelector(".js-timeline-moon__rise").style.gridColumn = `${moonRise} / -1`;
+			break;
+		default:
+			// add extra html
+			document.querySelector(".js-moon").innerHTML = `<div class="c-timeline__line js-timeline-moon"><time class="c-timeline__time js-moon-rise">__:__</time><time class="c-timeline__time js-moon-set">__:__</time></div>`;
+			
+			// set time elements
+			document.querySelector(".js-moon-rise").innerText = queryResponse.moonRise;
+			document.querySelector(".js-moon-set").innerText = queryResponse.moonSet;
+
+			// calculate data
+			moonRise = Math.round((parseInt(queryResponse.moonRise.split(":")[0]) * 60 + parseInt(queryResponse.moonRise.split(":")[1])) / 1440 * 100);
+			moonSet = Math.round((parseInt(queryResponse.moonSet.split(":")[0]) * 60 + parseInt(queryResponse.moonSet.split(":")[1])) / 1440 * 100);
+
+			// edit timeline
+			document.querySelector(".js-timeline-moon").style.gridColumn = `${moonRise} / ${moonSet}`;
+			break;
+	}
 
     var phaseExplanationData = phaseExplanation[`${queryResponse.moonPhase}`];
     document.querySelector(".js-rise-comparison").innerText = phaseExplanationData.rise;

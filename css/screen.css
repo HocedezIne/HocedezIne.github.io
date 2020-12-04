@@ -300,8 +300,7 @@ input::placeholder {
 
 .c-moonContainer {
     text-align: center;
-
-    margin-top: 25%;
+    margin: auto 0;
 }
 
 /*
@@ -379,12 +378,47 @@ input::placeholder {
     }
 }
 
+/* 
+    Component: Timeline
+    ---
+    Class to put on timeline elements
+*/
+.c-timeline-wrapper {
+    margin-top: auto;
+    margin-bottom: var(--global-whitespace-lg);
+}
+
+.c-timeline {
+    display: grid;
+    grid-template-columns: repeat(100, 1fr);
+
+    padding-bottom: var(--global-baseline);
+}
+
+.c-timeline__line {
+    grid-column: 1 / -1;
+
+    border-top: 2px solid var(--global-borderColor);
+
+    display: flex;
+    justify-content: space-between;
+    /* padding-bottom: var(--global-baseline); */
+}
+
+.c-timeline__indicator {
+    font-size: 0.8rem;
+    line-height: 1rem;
+
+    display: flex;
+    justify-content: center;
+    padding-bottom: 4px;
+}
+
 /*
     Component: Button
     ---
     Class to put on buttons
 */
-
 .c-button {    
     --button-hover-borderColor: var(--global-hover-borderColor);
     --button-focus-borderColor:var(--global-focus-borderColor);
@@ -593,6 +627,12 @@ input::placeholder {
 .u-align-right {
     display: flex;
     justify-content: flex-end;
+}
+
+@media (min-width: 375px) {
+    .u-break{
+        display: inline-block;
+    }
 }
 
 /*------------------------------------*\

@@ -313,30 +313,31 @@
                     </p>
                 </div>
             </div>
-
+            
             <!-- timeline -->
-            <!-- <div class="c-horizon">
-                <div class="c-horizon__sky-wrapper">
-                    <div class=c-horizon__sky"">
-                        <span class="c-timeline__moon js-moon" date-time="00:00" style="left:0%">
-                            <svg class="c-moon" viewBox="0 0 100 100" width="100" height="100">
-                                <circle cx="50" cy="50" r="50"/>
-                            </svg>
-                        </span>
-                        <div class="c-timeline__line">
-                            <time class="c-timeline__time js-moonrise">__:__</time>
-                            <time class="c-timeline__time js-moonset">__:__</time>
-                        </div>
+            <div class="c-timeline-wrapper">
+                <div class="c-timeline">
+                    <div class="c-timeline__line"></div>
+                </div>
+                <span class="c-timeline__indicator">Sun</span>
+                <div class="c-timeline">
+                    <div class="c-timeline__line js-timeline-sun">
+                        <time class="c-timeline__time js-sun-rise">__:__</time>
+                        <time class="c-timeline__time js-sun-set">__:__</time>
                     </div>
                 </div>
-            </div> -->
+                <span class="c-timeline__indicator">Moon</span>
+                <div class="c-timeline js-moon">
+                    <!-- moon rise and set times added via js -->
+                </div>
+            </div>
             
             <!-- phase explanation -->
             <div>
                 <p class="c-app__summary">
-                    The moon rises <span class="u-bold js-rise-comparison">___</span>,<br>
-                    transits meridian <span class="u-bold js-transit-comparison">___</span>,<br>
-                    and sets <span class="u-bold js-set-comparison">___</span>.
+                    <span class="u-break">The moon rises <span class="u-bold js-rise-comparison">___</span>,</span>
+                    <span class="u-break">transits meridian <span class="u-bold js-transit-comparison">___</span>,</span>
+                    <span class="u-break">and sets <span class="u-bold js-set-comparison">___</span>.</span>
                 </p>
             </div>
         </main>
