@@ -336,32 +336,29 @@ input::placeholder {
     margin: 0 auto;
 }
 
-/* .c-mockup {
-    height: calc(100vh - 10%);
-    height: calc(100vh - var(--global-baseline) * 4);
-} */
-
 .c-app-landing__contentwrapper {
     margin: 16px;
 
-    align-items: center;
+    align-self: center;
 }
 
 .c-app-landing__content {
     line-height: 1.4rem;
 }
 
-@media (min-width: 992px) {
+@media (min-width: 768px) {
     .c-app-landing {
-        margin: calc(var(--global-baseline) * 11.5);
-
         display: grid;
+
         grid-template-columns: repeat(2, 1fr);
-        gap: 352px;
+    }
+
+    .c-app-landing__contentwrapper {
+        margin: 0px 32px 0px 0px;
     }
 
     .c-mockup {
-        height: calc(100vh - var(--global-baseline) * 23);
+        height: 100vh;
     }
 }
 
@@ -372,21 +369,19 @@ input::placeholder {
 */
 
 .c-button {    
-    --button-borderColor: var(--global-borderColor);
     --button-hover-borderColor: var(--global-hover-borderColor);
     --button-focus-borderColor:var(--global-focus-borderColor);
 
-    font-size: 0.8rem;
-    line-height: calc(var(--global-baseline) * 2.5);
-    color: var(--global-textColor);
+    /* font-size: 1rem; */
+    line-height: 1rem;
+    color: var(--global-accent-textColor);
 
     border-radius: var(--global-borderRadius);
-    border: 1px solid var(--button-borderColor);
+    border: 1px solid var(--global-accent-borderColor);
 
     outline: none;
     
-    padding: calc(calc(var(--global-baseline) * 3) - calc(var(--global-baseline) * 2.5)) var(--global-baseline);
-    margin-left: calc(100% - 60px);
+    padding: var(--global-whitespace-md);
 }
 
 .c-button:hover {
@@ -395,6 +390,7 @@ input::placeholder {
 
 .c-button:focus {
     border-color: var(--button-focus-borderColor);
+    box-shadow: var(--global-boxshadow);
 }
 
 .c-button:active {
@@ -437,16 +433,23 @@ input::placeholder {
 */
 
 .c-form {
-    margin: 76px 0;
+    margin-top: 56px;
 }
 
 .c-form * {
-    /* background-color: #fff; */
     margin-bottom: 16px;
 }
 
 .c-form-field {
     position: relative;
+}
+
+@media (min-width: 1024px) {
+    .c-form {
+        display: grid;
+        grid-template-columns: 3fr 1fr;
+        gap: var(--global-baseline);
+    }
 }
 
 /*
@@ -456,6 +459,8 @@ input::placeholder {
 */
 
 .c-label {
+    display: flex;
+
     margin-bottom: 0;
 
     padding-bottom: var(--global-whitespace-sm);
@@ -466,9 +471,11 @@ input::placeholder {
 }
 
 .c-label__error-message {
+    justify-self: flex-end;
+
     font-weight: 600;
 	float: right;
-	display: none;
+    display: none;
 }
 
 .c-label__error-message.is-visible {
@@ -485,6 +492,8 @@ input::placeholder {
     transition: transform var(--global-transitionDuration-alpha) var(--global-transitionEasing-out);
     z-index: 1;
     /* border-radius: var(--global-borderRadius); */
+
+    pointer-events: none;
 }
 
 /*
@@ -508,7 +517,7 @@ input::placeholder {
     color: var(--global-color-x-dark);
     font-family: inherit;
     font-size: 0.8rem;
-    line-height: 1rem;
+    line-height: 1.2rem;
 
     padding: 16px;
     outline: none;
@@ -541,15 +550,24 @@ input::placeholder {
     Utilitie: button variant
     Form variant of button
 */
-.u-action {
-    font-size: 1rem;
-    line-height: 1.2rem;
-    color: var(--global-accent-textColor);
+.u-button-sm {
+    /* margin-left: calc(100% - 60px); */
+    padding: calc(calc(var(--global-baseline) * 3) - calc(var(--global-baseline) * 2.5)) var(--global-baseline);
 
-    --button-borderColor: var(--global-accent-textColor);
+    font-size: 0.8rem;
+    line-height: calc(var(--global-baseline) * 2.5);
+    color: var(--global-textColor);
 
-    padding: var(--global-whitespace-md);
-    margin: 0 auto;
+    border-color: var(--global-borderColor);
+}
+
+/*
+    Utilitie: align right
+    Changes aligns items right
+*/
+.u-align-right {
+    display: flex;
+    justify-content: flex-end;
 }
 
 /*------------------------------------*\
@@ -579,6 +597,7 @@ input::placeholder {
 
     /* border */
     --global-borderColor: var(--global-color-light);
+    --global-accent-borderColor: var(--global-color-x-light);
     --global-hover-borderColor: var(--global-color-x-light);
     --global-focus-borderColor: var(--global-color-x-light);
 }
@@ -601,7 +620,8 @@ input::placeholder {
     --global-fillColor: var(--global-color-xx-dark);
 
     /* border */
-    --global-borderColor: var(--global-color-light);
+    --global-borderColor: var(--global-color-dark);
+    --global-accent-borderColor: var(--global-color-x-dark);
     --global-hover-borderColor: var(--global-color-x-dark);
     --global-focus-borderColor: var(--global-color-x-dark);
 }

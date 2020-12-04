@@ -53,7 +53,8 @@ const getDOMElements = function() {
 	email.input = document.querySelector('.js-email-input');
     email.field = document.querySelector('.js-email-field');
 
-    signUpButton = document.querySelector('.js-sign-up-button');
+	signUpButton = document.querySelector('.js-sign-up-button');
+	formWrapper = document.querySelector(".js-form-wrapper");
 };
 
 const enableListeners = function() {
@@ -79,7 +80,7 @@ const enableListeners = function() {
 		if (
 			isValidEmailAddress(email.input.value)
 		) {
-			console.log('Form is good to go!');
+			formWrapper.innerText = "Thanks for signing up!";
 		} else {
 			addErrors(email);
 			email.input.addEventListener('input', doubleCheckEmailAddress);

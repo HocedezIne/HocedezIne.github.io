@@ -9,9 +9,18 @@
     <meta name="msapplication-TileColor" content="#0B3784">
     <meta name="theme-color" content="#0B3784">
 
-    <link href="https://fonts.googleapis.com/css2?family=Lora&family=Noto+Sans+JP:wght@300;400;700&display=swap" rel="stylesheet">
-    <link rel="shortcut icon" href="img/svg/Moonlet_Logo.svg" type="image/svg">
+    <link rel="apple-touch-icon" sizes="180x180" href="/img/favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/img/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/img/favicon/favicon-16x16.png">
+    <link rel="manifest" href="/img/favicon/site.webmanifest">
+    <link rel="mask-icon" href="/img/favicon/safari-pinned-tab.svg" color="#5bbad5">
+    <link rel="shortcut icon" href="/img/favicon/favicon.ico">
+    <meta name="msapplication-TileColor" content="#da532c">
+    <meta name="msapplication-config" content="/img/favicon/browserconfig.xml">
+    <meta name="theme-color" content="#ffffff">
 
+    <link href="https://fonts.googleapis.com/css2?family=Lora&family=Noto+Sans+JP:wght@300;400;700&display=swap" rel="stylesheet">
+    
     <link rel="stylesheet" href="css/normalize.css">
     <link rel="stylesheet" href="css/screen.css">
 
@@ -31,16 +40,20 @@
             <div class="c-app-landing__content">
                 <p>Soon, we will bring you Moonlet. An app that will easily let you check the current moon phase as well as rise, set, and transit times. Sign up to the mailing list and we'll let you know when everything is ready.</p>
             </div>
-            <form class="c-form">
-                <p class="c-form-field js-email-field">
-                    <label class="c-label c-label--floating js-floating-label js-email-label" for="email">
-                        Email
-                        <span class="c-label__error-message js-email-error-message">This field is required</span>
-                    </label>
-                    <input class="c-input c-input--with-floating-label js-floating-input js-email-input" type="email" name="email" required>
-                    <button class="o-button-reset c-button u-action js-sign-up-button">Sign up</button>
-                </p>
-            </form>
+            <div class="c-form-wrapper js-form-wrapper">
+                <form class="c-form">
+                    <p class="c-form-field js-email-field">
+                        <label class="c-label c-label--floating js-floating-label js-email-label" for="email">
+                            Email
+                            <span class="c-label__error-message js-email-error-message">This field is required</span>
+                        </label>
+                        <input class="c-input c-input--with-floating-label js-floating-input js-email-input" type="email" name="email" required>
+                    </p>
+                    <p>
+                        <button class="o-button-reset c-button js-sign-up-button">Sign up</button>
+                    </p>
+                </form>
+            </div>
         </div>
     </div>
 </body>
