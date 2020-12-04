@@ -518,11 +518,8 @@ input::placeholder {
 */
 
 .c-label {
-    display: flex;
-
-    margin-bottom: 0;
-
-    padding-bottom: var(--global-whitespace-sm);
+    margin-bottom: var(--global-whitespace-sm);
+    width: calc(100% - var(--global-whitespace-md));
     
     font-size: 0.8rem;
     line-height: 1rem;
@@ -530,8 +527,6 @@ input::placeholder {
 }
 
 .c-label__error-message {
-    justify-self: flex-end;
-
     font-weight: 600;
 	float: right;
     display: none;
