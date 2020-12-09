@@ -305,11 +305,25 @@ input::placeholder {
 }
 
 .c-moonphase__icon {
-    width: calc(var(--global-baseline) * 25);
-    height: calc(var(--global-baseline) * 25);
+    width: calc(var(--global-baseline) * 20);
+    height: calc(var(--global-baseline) * 20);
     margin-bottom: var(--global-whitespace-xl);
 
     filter: drop-shadow(var(--global-dropshadow));
+}
+
+@media (min-width: 375px){
+    .c-moonphase__icon {
+        width: calc(var(--global-baseline) * 22);
+        height: calc(var(--global-baseline) * 22);
+    }
+}
+
+@media (min-width: 768px){
+    .c-moonphase__icon {
+        width: calc(var(--global-baseline) * 25);
+        height: calc(var(--global-baseline) * 25);
+    }
 }
 
 .c-moonContainer {
