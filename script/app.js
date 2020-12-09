@@ -79,9 +79,6 @@ const showResult = queryResponse => {
 	// grid span moon
 	let moonRise, moonSet;
 	switch(queryResponse.moonPhase){
-		case "Full Moon":
-			document.querySelector(".js-moon").innerText = "TODO";
-			break;
 		case "Waning Crescent":
 			// add extra html
 			document.querySelector(".js-moon").innerHTML = `<div class="c-timeline__line js-timeline-moon"><time class="c-timeline__time js-moon-rise">__:__</time><time class="c-timeline__time js-moon-set">__:__</time></div>`;
@@ -132,6 +129,16 @@ const showResult = queryResponse => {
 			document.querySelector(".js-timeline-moon__set").style.gridColumn = `1 / span ${moonSet}`;
 			document.querySelector(".js-timeline-moon__set").style.justifyContent = "flex-end";
 			document.querySelector(".js-timeline-moon__rise").style.gridColumn = `${moonRise} / -1`;
+
+			if (queryResponse.moonIllumination >= 0.99) {
+				// the actual moon phase is full moon
+				document.querySelector(".js-moonContainer").innerHTML = `<svg class="c-moonphase__icon"><use xlink:href="#FullMoon"></use></svg>`;
+				document.querySelector(".js-moonPhase").innerText = "Full Moon";
+				var phaseExplanationData = phaseExplanation["Full Moon"];
+				document.querySelector(".js-rise-comparison").innerText = phaseExplanationData.rise;
+				document.querySelector(".js-transit-comparison").innerText = phaseExplanationData.transit;
+				document.querySelector(".js-set-comparison").innerText = phaseExplanationData.set;
+			}
 			break;
 		case "Waxing Crescent":
 			// add extra html
@@ -231,7 +238,7 @@ const getAPI = async (position) => {
     const date = `${now.getFullYear()}${(now.getMonth()+1).toString().padStart(2,"0")}${now.getDate().toString().padStart(2,"0")}`;
     const timezoneOffset = now.getTimezoneOffset()*-1/60;
     
-    const url = `https://api.solunar.org/solunar/${lat},${lon},20201222,${timezoneOffset}`
+    const url = `https://api.solunar.org/solunar/${lat},${lon},${date},${timezoneOffset}`
 
     const data = await fetch(url)
 					.then((r) => r.json())
