@@ -62,7 +62,11 @@ const showResult = queryResponse => {
 
     document.querySelector(".js-moonContainer").innerHTML = `<svg class="c-moonphase__icon"><use xlink:href="#${queryResponse.moonPhase.replace(" ", "")}"></use></svg>`;
     document.querySelector(".js-moonPhase").innerText = queryResponse.moonPhase;
-    document.querySelector(".js-illumination").innerText = Math.round(queryResponse.moonIllumination*100);
+	document.querySelector(".js-illumination").innerText = Math.round(queryResponse.moonIllumination*100);
+	var phaseExplanationData = phaseExplanation[`${queryResponse.moonPhase}`];
+    document.querySelector(".js-rise-comparison").innerText = phaseExplanationData.rise;
+    document.querySelector(".js-transit-comparison").innerText = phaseExplanationData.transit;
+    document.querySelector(".js-set-comparison").innerText = phaseExplanationData.set;
 
 	document.querySelector(".js-sun-rise").innerText = queryResponse.sunRise;
 	document.querySelector(".js-sun-set").innerText = queryResponse.sunSet;
@@ -77,6 +81,42 @@ const showResult = queryResponse => {
 	switch(queryResponse.moonPhase){
 		case "Full Moon":
 			document.querySelector(".js-moon").innerText = "TODO";
+			break;
+		case "Waning Crescent":
+			// add extra html
+			document.querySelector(".js-moon").innerHTML = `<div class="c-timeline__line js-timeline-moon"><time class="c-timeline__time js-moon-rise">__:__</time><time class="c-timeline__time js-moon-set">__:__</time></div>`;
+
+			// set time elements
+			document.querySelector(".js-moon-set").innerText = queryResponse.moonSet;
+
+			// calculate data
+			moonSet = Math.round((parseInt(queryResponse.moonSet.split(":")[0]) * 60 + parseInt(queryResponse.moonSet.split(":")[1])) / 1440 * 100);
+
+			if (queryResponse.moonRise == null) {
+				// the actual moon phase is last quarter
+				document.querySelector(".js-moonContainer").innerHTML = `<svg class="c-moonphase__icon"><use xlink:href="#LastQuarter"></use></svg>`;
+				document.querySelector(".js-moonPhase").innerText = "Last Quarter";
+				var phaseExplanationData = phaseExplanation["Last Quarter"];
+				document.querySelector(".js-rise-comparison").innerText = phaseExplanationData.rise;
+				document.querySelector(".js-transit-comparison").innerText = phaseExplanationData.transit;
+				document.querySelector(".js-set-comparison").innerText = phaseExplanationData.set;
+				
+				// set time elements
+				document.querySelector(".js-moon-rise").innerText = "00:00";
+			
+				// calculate data
+				moonRise = 1;
+			}
+			else {
+				// set time elements
+				document.querySelector(".js-moon-rise").innerText = queryResponse.moonRise;
+
+				// calculate data
+				moonRise = Math.round((parseInt(queryResponse.moonRise.split(":")[0]) * 60 + parseInt(queryResponse.moonRise.split(":")[1])) / 1440 * 100);
+			}
+
+			// edit timeline
+			document.querySelector(".js-timeline-moon").style.gridColumn = `${moonRise} / ${moonSet}`;
 			break;
 		case "Waning Gibbous":
 			// add extra html
@@ -128,11 +168,6 @@ const showResult = queryResponse => {
 			document.querySelector(".js-timeline-moon").style.gridColumn = `${moonRise} / ${moonSet}`;
 			break;
 	}
-
-    var phaseExplanationData = phaseExplanation[`${queryResponse.moonPhase}`];
-    document.querySelector(".js-rise-comparison").innerText = phaseExplanationData.rise;
-    document.querySelector(".js-transit-comparison").innerText = phaseExplanationData.transit;
-    document.querySelector(".js-set-comparison").innerText = phaseExplanationData.set;
 }
 
 const getLocation = () => {
@@ -149,7 +184,7 @@ const getAPI = async (position) => {
     const date = `${now.getFullYear()}${(now.getMonth()+1).toString().padStart(2,"0")}${now.getDate().toString().padStart(2,"0")}`;
     const timezoneOffset = now.getTimezoneOffset()*-1/60;
     
-    const url = `https://api.solunar.org/solunar/${lat},${lon},${date},${timezoneOffset}`
+    const url = `https://api.solunar.org/solunar/${lat},${lon},20201208,${timezoneOffset}`
 
     const data = await fetch(url)
 					.then((r) => r.json())

@@ -55,6 +55,7 @@ html {
 
     color: var(--global-textColor);
     background-image: linear-gradient(to bottom right, var(--global-backgroundColor-top), var(--global-backgroundColor-bottom));
+    background-size: cover;
 
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
@@ -106,30 +107,30 @@ h3 {
 }
 
 h1 {
-    font-size: 36px;
-    line-height: 48px;
-    margin: 0 0 24px;
+    font-size: 1.8rem;
+    line-height: 2.4rem;
+    margin: 0 0 calc(var(--global-baseline) * 3);
 }
 
 h2 {
-    font-size: 32px;
-    line-height: 40px;
-    margin: 0 0 24px;
+    font-size: 1.6rem;
+    line-height: 2rem;
+    margin: 0 0 calc(var(--global-baseline) * 3);
 }
 
 h3 {
-    font-size: 26px;
-    line-height: 32px;
-    margin: 0 0 24px;
+    font-size: 1.3rem;
+    line-height: 1.6rem;
+    margin: 0 0 calc(var(--global-baseline) * 3);
 }
 
 h4,
 h5,
 h6 {
-    font-size: 16px;
+    font-size: 0.8rem;
     font-weight: 600;
-    line-height: 24px;
-    margin: 0 0 24px;
+    line-height: 1.2rem;
+    margin: 0 0 calc(var(--global-baseline) * 3);
 }
 
 p,
@@ -139,12 +140,12 @@ dl,
 table,
 address,
 figure {
-    margin: 0 0 24px;
+    margin: 0 0 calc(var(--global-baseline) * 3);
 }
 
 ul,
 ol {
-    padding-left: 24px;
+    padding-left: calc(var(--global-baseline) * 3);
 }
 
 li ul,
@@ -154,9 +155,9 @@ li ol {
 
 blockquote {
     font-style: normal;
-    font-size: 23px;
-    line-height: 32px;
-    margin: 0 0 24px;
+    font-size: 1.15rem;
+    line-height: 1.6rem;
+    margin: 0 0 calc(var(--global-baseline) * 3);
 }
 
 blockquote * {
@@ -166,23 +167,23 @@ blockquote * {
 
 figcaption {
     font-weight: 400;
-    font-size: 12px;
-    line-height: 16px;
-    margin-top: 8px;
+    font-size: 0.6rem;
+    line-height: 0.8rem;
+    margin-top: var(--global-whitespace-sm);
 }
 
 hr {
     border: 0;
     height: 1px;
     background: LightGrey;
-    margin: 0 0 24px;
+    margin: 0 0 calc(var(--global-baseline) * 3);
 }
 
 a {
     color: red;
     outline-color: red;
     outline-width: medium;
-    outline-offset: 2px;
+    outline-offset: calc(var(--global-whitespace-xs) / 2);
 }
 
 a:visited,
@@ -269,8 +270,8 @@ input::placeholder {
 */
 
 .c-moon {
-    width: 0.8rem;
-    height: 0.8rem;
+    width: var(--global-whitespace-md);
+    height: var(--global-whitespace-md);
 
     fill: var(--global-fillColor);
 }
@@ -291,8 +292,8 @@ input::placeholder {
 }
 
 .c-moonphase__icon {
-    width: 10rem;
-    height: 10rem;
+    width: calc(var(--global-baseline) * 25);
+    height: calc(var(--global-baseline) * 25);
     margin-bottom: var(--global-whitespace-xl);
 
     filter: drop-shadow(var(--global-dropshadow));
@@ -317,9 +318,9 @@ input::placeholder {
     box-sizing: content-box; /* padding wordt nu aan buitenkant gezet ipv binnenkant */
     margin: 0 auto;
 
-    max-width: 400px;
+    max-width: calc(var(--global-baseline) * 50);
     min-height: calc(100vh - 2 * 1rem);
-    padding: 1rem 2rem; /* in huidige font-size 16 en 32px */
+    padding: 1rem 2rem;
 }
 
 .c-app__summary {
@@ -336,7 +337,7 @@ input::placeholder {
 }
 
 .c-app-landing__contentwrapper {
-    margin: 16px;
+    margin: var(--global-whitespace-md);
 
     align-self: center;
 }
@@ -353,7 +354,7 @@ input::placeholder {
     }
 
     .c-app-landing__contentwrapper {
-        margin: 0px 32px 0px 0px;
+        margin: 0 var(--global-whitespace-lg) 0 0;
     }
 
     .c-mockup {
@@ -369,7 +370,7 @@ input::placeholder {
     }
 
     .c-app-landing__contentwrapper {
-        margin: 32px;
+        margin: var(--global-whitespace-lg);
         justify-self: center;
     }
 
@@ -411,7 +412,7 @@ input::placeholder {
 
     display: flex;
     justify-content: center;
-    padding-bottom: 4px;
+    padding-bottom: var(--global-whitespace-xs);
 }
 
 /*
@@ -484,11 +485,11 @@ input::placeholder {
 */
 
 .c-form {
-    margin-top: 56px;
+    margin-top: calc(var(--global-baseline) * 7);
 }
 
 .c-form * {
-    margin-bottom: 16px;
+    margin-bottom: var(--global-whitespace-md);
 }
 
 .c-form-field {
@@ -573,7 +574,7 @@ input::placeholder {
     font-size: 0.8rem;
     line-height: 1.2rem;
 
-    padding: 16px;
+    padding: var(--global-whitespace-md);
     outline: none;
     transition: var(--input-transition);
 }
