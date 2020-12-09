@@ -36,6 +36,19 @@
 }
 
 /*------------------------------------*\
+#Keyframes
+\*------------------------------------*/
+
+@keyframes rotating {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }
+
+/*------------------------------------*\
 #GENERIC
 \*------------------------------------*/
 
@@ -420,10 +433,7 @@ input::placeholder {
     ---
     Class to put on buttons
 */
-.c-button {    
-    --button-hover-borderColor: var(--global-hover-borderColor);
-    --button-focus-borderColor:var(--global-focus-borderColor);
-
+.c-button {
     /* font-size: 1rem; */
     line-height: 1rem;
     color: var(--global-accent-textColor);
@@ -437,16 +447,17 @@ input::placeholder {
 }
 
 .c-button:hover {
-    border-color: var(--button-hover-borderColor);
+    background-color: var(--global-color-xx-dark);
 }
 
 .c-button:focus {
-    border-color: var(--button-focus-borderColor);
+    border-color: var(--global-color-light);
     box-shadow: var(--global-boxshadow);
 }
 
 .c-button:active {
-    box-shadow: var(--global-boxshadow);
+    border-color: var(--global-color-light);
+    box-shadow: 0 0 calc(var(--global-baseline) / 4) 0 var(--global-shadowColor);
 }
 
 /*
@@ -694,6 +705,42 @@ input::placeholder {
 
 .has-error {
     color: blueviolet;
+}
+
+.on-click, .on-click:focus {
+    width: 56px;
+    border-radius: 100%;
+    border-color: var(--global-color-light);
+    border-width: 3px;
+    box-shadow: none;
+    font-size: 0;
+    border-left-color: var(--global-color-xx-light);
+    animation: rotating 2s 0.25s linear infinite;
+}
+
+.on-click::after {
+    content: "";
+}
+
+.on-click:hover {
+    background: none;
+}
+
+.validated {
+    /* 101.8 x 54 */
+
+    width: 101.8px;
+    height: 54px;
+    background: none;
+}
+
+.validated__symbol {
+    width: 1rem;
+    height: 1rem;
+
+    margin-bottom: 0;
+
+    fill: var(--global-fillColor);
 }
 
 /*------------------------------------*\

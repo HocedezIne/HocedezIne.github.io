@@ -54,7 +54,6 @@ const getDOMElements = function() {
     email.field = document.querySelector('.js-email-field');
 
 	signUpButton = document.querySelector('.js-sign-up-button');
-	formWrapper = document.querySelector(".js-form-wrapper");
 };
 
 const enableListeners = function() {
@@ -77,10 +76,26 @@ const enableListeners = function() {
 		// We gaan de form zelf versturen wanneer nodig.
 		e.preventDefault();
 
-		if (
-			isValidEmailAddress(email.input.value)
-		) {
-			formWrapper.innerText = "Thanks for signing up!";
+		if (isValidEmailAddress(email.input.value)) {
+			// start animation
+			signUpButton.classList.add("on-click");
+			setTimeout(function(){
+				// stop animation
+				signUpButton.classList.remove("on-click");
+	
+				// add checkmark
+				signUpButton.classList.add("validated");
+				signUpButtonText = signUpButton.innerText;
+				signUpButton.innerHTML = `<svg class="validated__symbol" xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M9 16.2l-3.5-3.5c-.39-.39-1.01-.39-1.4 0-.39.39-.39 1.01 0 1.4l4.19 4.19c.39.39 1.02.39 1.41 0L20.3 7.7c.39-.39.39-1.01 0-1.4-.39-.39-1.01-.39-1.4 0L9 16.2z"/></svg>`;
+
+				// back to button
+				setTimeout(function(){
+					email.input.value = "";
+					signUpButton.classList.remove("validated");
+					signUpButton.innerText = signUpButtonText;
+				}, 1000);
+			}, 2500);
+
 		} else {
 			addErrors(email);
 			email.input.addEventListener('input', doubleCheckEmailAddress);
