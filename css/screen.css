@@ -27,12 +27,12 @@
     --global-dropshadow: 0 0 var(--global-whitespace-sm) var(--global-shadowColor);
 
     /* borders */
-    --global-borderRadius: 20px;
-    --global-borderWidth: 1px;
+    --global-borderRadius: calc(var(--global-baseline) * 2.5);
+    --global-borderWidth: calc(var(--global-baseline) / 8);
     
     /* fonts */
-    --global-logo-font : "Lora", serif;
     --global-font : "Noto Sans JP", sans-serif;
+    --global-logo-font : "Lora", serif;
 }
 
 /*------------------------------------*\
@@ -51,7 +51,6 @@
 /*------------------------------------*\
 #GENERIC
 \*------------------------------------*/
-
 /*
     Generic: Page
     ---
@@ -95,7 +94,6 @@ html {
 /*------------------------------------*\
 #Elements
 \*------------------------------------*/
-
 /*
 Elements: Images
 ---
@@ -225,7 +223,6 @@ input::placeholder {
 /*------------------------------------*\
 #OBJECTS
 \*------------------------------------*/
-
 /*
     Object: Button reset
     ---
@@ -277,61 +274,6 @@ input::placeholder {
 \*------------------------------------*/
 
 /*
-    Component: Moon
-    ---
-    The moon
-*/
-
-.c-moon {
-    width: var(--global-whitespace-md);
-    height: var(--global-whitespace-md);
-
-    fill: var(--global-fillColor);
-}
-
-.c-moonphase__name {
-    color: var(--global-accent-textColor);
-
-    font-size: 1.2rem;
-    line-height: 1.167em;
-    font-weight: 400;
-
-    margin-bottom: calc(var(--global-whitespace)/3);
-}
-
-.c-moonphase__illumination {
-    font-size: 0.8rem;
-    line-height: 1rem;
-}
-
-.c-moonphase__icon {
-    width: calc(var(--global-baseline) * 20);
-    height: calc(var(--global-baseline) * 20);
-    margin-bottom: var(--global-whitespace-xl);
-
-    filter: drop-shadow(var(--global-dropshadow));
-}
-
-@media (min-width: 375px){
-    .c-moonphase__icon {
-        width: calc(var(--global-baseline) * 22);
-        height: calc(var(--global-baseline) * 22);
-    }
-}
-
-@media (min-width: 768px){
-    .c-moonphase__icon {
-        width: calc(var(--global-baseline) * 25);
-        height: calc(var(--global-baseline) * 25);
-    }
-}
-
-.c-moonContainer {
-    text-align: center;
-    margin: auto 0;
-}
-
-/*
     Component: App
     ---
     Main app wrapper
@@ -355,6 +297,10 @@ input::placeholder {
     text-align: center;
 }
 
+/*
+    Generals for landing page
+*/
+
 .c-app-landing {
     margin: 0;
 }
@@ -371,107 +317,6 @@ input::placeholder {
 
 .c-app-landing__content {
     line-height: 1.4rem;
-}
-
-@media (min-width: 768px) and (orientation: landscape) {
-    .c-app-landing {
-        display: grid;
-
-        grid-template-columns: repeat(2, 1fr);
-    }
-
-    .c-app-landing__contentwrapper {
-        margin: 0 var(--global-whitespace-lg) 0 0;
-    }
-
-    .c-mockup {
-        height: 100vh;
-    }
-}
-
-@media (min-width: 768px) and (orientation: portrait) {
-    .c-app-landing {
-        display: grid;
-
-        grid-template-rows: repeat(2, 1fr);
-    }
-
-    .c-app-landing__contentwrapper {
-        margin: var(--global-whitespace-lg);
-        justify-self: center;
-    }
-
-    .c-mockup {
-        height: calc(100vh / 2);
-    }
-}
-
-/* 
-    Component: Timeline
-    ---
-    Class to put on timeline elements
-*/
-.c-timeline-wrapper {
-    margin-top: auto;
-    margin-bottom: var(--global-whitespace-lg);
-}
-
-.c-timeline {
-    display: grid;
-    grid-template-columns: repeat(100, 1fr);
-
-    padding-bottom: var(--global-baseline);
-}
-
-.c-timeline__line {
-    grid-column: 1 / -1;
-
-    border-top: 2px solid var(--global-borderColor);
-
-    display: flex;
-    justify-content: space-between;
-    /* padding-bottom: var(--global-baseline); */
-}
-
-.c-timeline__indicator {
-    font-size: 0.8rem;
-    line-height: 1rem;
-
-    display: flex;
-    justify-content: center;
-    padding-bottom: var(--global-whitespace-xs);
-}
-
-/*
-    Component: Button
-    ---
-    Class to put on buttons
-*/
-.c-button {
-    /* font-size: 1rem; */
-    line-height: 1rem;
-    color: var(--global-accent-textColor);
-
-    border-radius: var(--global-borderRadius);
-    border: 1px solid var(--global-accent-borderColor);
-
-    outline: none;
-    
-    padding: var(--global-whitespace-md);
-}
-
-.c-button:hover {
-    background-color: var(--global-color-xx-dark);
-}
-
-.c-button:focus {
-    border-color: var(--global-color-light);
-    box-shadow: var(--global-boxshadow);
-}
-
-.c-button:active {
-    border-color: var(--global-color-light);
-    box-shadow: 0 0 calc(var(--global-baseline) / 4) 0 var(--global-shadowColor);
 }
 
 /*
@@ -504,6 +349,77 @@ input::placeholder {
 }
 
 /*
+    Component: moonContainer
+    ---
+    moonContainer and it's child elements
+*/
+
+.c-moonContainer {
+    text-align: center;
+    margin: auto 0;
+}
+
+.c-moonphase__name {
+    color: var(--global-accent-textColor);
+
+    font-size: 1.2rem;
+    line-height: 1.167em;
+    font-weight: 400;
+
+    margin-bottom: calc(var(--global-whitespace)/3);
+}
+
+.c-moonphase__illumination {
+    font-size: 0.8rem;
+    line-height: 1rem;
+}
+
+.c-moonphase__icon {
+    width: calc(var(--global-baseline) * 20);
+    height: calc(var(--global-baseline) * 20);
+    margin-bottom: var(--global-whitespace-xl);
+
+    filter: drop-shadow(var(--global-dropshadow));
+}
+
+/* 
+    Component: Timeline
+    ---
+    Class to put on timeline elements
+*/
+
+.c-timeline-wrapper {
+    margin-top: auto;
+    margin-bottom: var(--global-whitespace-lg);
+}
+
+.c-timeline {
+    display: grid;
+    grid-template-columns: repeat(100, 1fr);
+
+    padding-bottom: var(--global-baseline);
+}
+
+.c-timeline__line {
+    grid-column: 1 / -1;
+
+    border-top: 2px solid var(--global-borderColor);
+
+    display: flex;
+    justify-content: space-between;
+    /* padding-bottom: var(--global-baseline); */
+}
+
+.c-timeline__indicator {
+    font-size: 0.8rem;
+    line-height: 1rem;
+
+    display: flex;
+    justify-content: center;
+    padding-bottom: var(--global-whitespace-xs);
+}
+
+/*
     Component: Forms
     ---
     Everything form related here
@@ -519,22 +435,6 @@ input::placeholder {
 
 .c-form-field {
     position: relative;
-}
-
-@media (min-width: 1024px) {
-    .c-form {
-        display: grid;
-        grid-template-columns: 3fr 1fr;
-        gap: var(--global-baseline);
-    }
-}
-
-@media (min-width: 768px) and (orientation: portrait) {
-    .c-form {
-        display: grid;
-        grid-template-columns: 3fr 1fr;
-        gap: var(--global-baseline);
-    }
 }
 
 /*
@@ -614,6 +514,39 @@ input::placeholder {
     box-shadow: var(--global-input-focus-boxShadowSpread) var(--input-focus-boxShadowColor, var(--global-input-focus-boxShadowColor));
 }
 
+/*
+    Component: Button
+    ---
+    Class to put on buttons
+*/
+
+.c-button {
+    /* font-size: 1rem; */
+    line-height: 1rem;
+    color: var(--global-accent-textColor);
+
+    border-radius: var(--global-borderRadius);
+    border: 1px solid var(--global-accent-borderColor);
+
+    outline: none;
+    
+    padding: var(--global-whitespace-md);
+}
+
+.c-button:hover {
+    background-color: var(--global-color-xx-dark);
+}
+
+.c-button:focus {
+    border-color: var(--global-color-light);
+    box-shadow: var(--global-boxshadow);
+}
+
+.c-button:active {
+    border-color: var(--global-color-light);
+    box-shadow: 0 0 calc(var(--global-baseline) / 4) 0 var(--global-shadowColor);
+}
+
 /*------------------------------------*\
 #UTILITIES
 \*------------------------------------*/
@@ -622,6 +555,7 @@ input::placeholder {
     Utilitie: bold
     Change font-weight to bold
 */
+
 .u-bold {
     font-weight: 400;
 }
@@ -630,6 +564,7 @@ input::placeholder {
     Utilitie: button variant
     Form variant of button
 */
+
 .u-button-sm {
     /* margin-left: calc(100% - 60px); */
     padding: calc(calc(var(--global-baseline) * 3) - calc(var(--global-baseline) * 2.5)) var(--global-baseline);
@@ -645,15 +580,10 @@ input::placeholder {
     Utilitie: align right
     Changes aligns items right
 */
+
 .u-align-right {
     display: flex;
     justify-content: flex-end;
-}
-
-@media (min-width: 375px) {
-    .u-break{
-        display: inline-block;
-    }
 }
 
 /*------------------------------------*\
@@ -712,14 +642,18 @@ input::placeholder {
     --global-focus-borderColor: var(--global-color-x-dark);
 }
 
+/*
+    Floating label
+*/
+
 .is-floating, .c-form-field:focus-within .c-label--floating { 
     transform: translateY(calc(var(--global-baseline) * -5.5));
     color: #E1E7EE;
 }
 
-.has-error {
-    color: blueviolet;
-}
+/*
+    Button
+*/
 
 .on-click, .on-click:focus {
     width: 56px;
@@ -760,6 +694,71 @@ input::placeholder {
 /*------------------------------------*\
 #MEDIA
 \*------------------------------------*/
+
+@media (min-width: 375px){
+    .c-moonphase__icon {
+        width: calc(var(--global-baseline) * 22);
+        height: calc(var(--global-baseline) * 22);
+    }
+
+    .u-break{
+        display: inline-block;
+    }
+}
+
+@media (min-width: 768px){
+    .c-moonphase__icon {
+        width: calc(var(--global-baseline) * 25);
+        height: calc(var(--global-baseline) * 25);
+    }
+}
+
+@media (min-width: 768px) and (orientation: landscape) {
+    .c-app-landing {
+        display: grid;
+
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .c-app-landing__contentwrapper {
+        margin: 0 var(--global-whitespace-lg) 0 0;
+    }
+
+    .c-mockup {
+        height: 100vh;
+    }
+}
+
+@media (min-width: 768px) and (orientation: portrait) {
+    .c-app-landing {
+        display: grid;
+
+        grid-template-rows: repeat(2, 1fr);
+    }
+
+    .c-app-landing__contentwrapper {
+        margin: var(--global-whitespace-lg);
+        justify-self: center;
+    }
+
+    .c-mockup {
+        height: calc(100vh / 2);
+    }
+
+    .c-form {
+        display: grid;
+        grid-template-columns: 3fr 1fr;
+        gap: var(--global-baseline);
+    }
+}
+
+@media (min-width: 1024px) {
+    .c-form {
+        display: grid;
+        grid-template-columns: 3fr 1fr;
+        gap: var(--global-baseline);
+    }
+}
 
 /*
     Print styles.

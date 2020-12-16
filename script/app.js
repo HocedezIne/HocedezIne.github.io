@@ -65,7 +65,7 @@ const showResult = queryResponse => {
 			// first build up general elements before adding the specific parts for each moon phase
 
 			// add the extra html to visualize the timeline
-			document.querySelector(".js-moon").innerHTML = `<div class="c-timeline__line js-timeline-moon"><time class="c-timeline__time js-moon-rise">__:__</time><time class="c-timeline__time js-moon-set">__:__</time></div>`;
+			document.querySelector(".js-moon").innerHTML = `<div class="c-timeline__line js-timeline-moon"><time class="js-moon-rise">__:__</time><time class="js-moon-set">__:__</time></div>`;
 
 			// set moonSet
 			document.querySelector(".js-moon-set").innerText = queryResponse.moonSet;
@@ -106,7 +106,7 @@ const showResult = queryResponse => {
 		case "Waning Gibbous":
 			// the api returns Full Moon as Waning Gibbous, no values are null
 			// add extra html to visualize the timeline
-			document.querySelector(".js-moon").innerHTML = `<div class="c-timeline__line js-timeline-moon__set"><time class="c-timeline__time js-moon-set">__:__</time></div><div class="c-timeline__line js-timeline-moon__rise"><time class="c-timeline__time js-moon-rise">__:__</time></div>`;
+			document.querySelector(".js-moon").innerHTML = `<div class="c-timeline__line js-timeline-moon__set"><time class="js-moon-set">__:__</time></div><div class="c-timeline__line js-timeline-moon__rise"><time class="js-moon-rise">__:__</time></div>`;
 
 			// rise and set times
 			document.querySelector(".js-moon-rise").innerText = queryResponse.moonRise;
@@ -141,7 +141,7 @@ const showResult = queryResponse => {
 		case "Waxing Crescent":
 			// the api returns New Moon as Waxing Crescent with a moonUnder value of null
 			// add the extra html to visualize the timeline
-			document.querySelector(".js-moon").innerHTML = `<div class="c-timeline__line js-timeline-moon"><time class="c-timeline__time js-moon-rise">__:__</time><time class="c-timeline__time js-moon-set">__:__</time></div>`;
+			document.querySelector(".js-moon").innerHTML = `<div class="c-timeline__line js-timeline-moon"><time class="js-moon-rise">__:__</time><time class="js-moon-set">__:__</time></div>`;
 
 			// set rise and set times
 			document.querySelector(".js-moon-rise").innerText = queryResponse.moonRise;
@@ -183,7 +183,7 @@ const showResult = queryResponse => {
 				document.querySelector(".js-set-comparison").innerText = phaseExplanationData.set;
 
 				// add extra html
-				document.querySelector(".js-moon").innerHTML = `<div class="c-timeline__line js-timeline-moon"><time class="c-timeline__time js-moon-rise">__:__</time><time class="c-timeline__time js-moon-set">__:__</time></div>`;
+				document.querySelector(".js-moon").innerHTML = `<div class="c-timeline__line js-timeline-moon"><time class="js-moon-rise">__:__</time><time class="js-moon-set">__:__</time></div>`;
 
 				//set set time and moonSet
 				document.querySelector(".js-moon-set").innerText = "23:59";
@@ -203,7 +203,7 @@ const showResult = queryResponse => {
 				document.querySelector(".js-set-comparison").innerText = phaseExplanationData.set;
 
 				// add extra html
-				document.querySelector(".js-moon").innerHTML = `<div class="c-timeline__line js-timeline-moon__set"><time class="c-timeline__time js-moon-set">__:__</time></div><div class="c-timeline__line js-timeline-moon__rise"><time class="c-timeline__time js-moon-rise">__:__</time></div>`;
+				document.querySelector(".js-moon").innerHTML = `<div class="c-timeline__line js-timeline-moon__set"><time class="js-moon-set">__:__</time></div><div class="c-timeline__line js-timeline-moon__rise"><time class="js-moon-rise">__:__</time></div>`;
 
 				// set set time and moonSet
 				document.querySelector(".js-moon-rise").innerText = queryResponse.moonRise;
@@ -227,7 +227,7 @@ const showResult = queryResponse => {
 			document.querySelector(".js-set-comparison").innerText = phaseExplanationData.set;
 
 			// add extra html
-			document.querySelector(".js-moon").innerHTML = `<div class="c-timeline__line js-timeline-moon"><time class="c-timeline__time js-moon-rise">__:__</time><time class="c-timeline__time js-moon-set">__:__</time></div>`;
+			document.querySelector(".js-moon").innerHTML = `<div class="c-timeline__line js-timeline-moon"><time class="js-moon-rise">__:__</time><time class="js-moon-set">__:__</time></div>`;
 			
 			// set times
 			document.querySelector(".js-moon-rise").innerText = queryResponse.moonRise;
